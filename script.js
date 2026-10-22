@@ -16,6 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Bouton Retour en haut
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
   // Animation d'apparition discrète au défilement
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver((entries) => {
