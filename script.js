@@ -1,25 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   // Menu Mobile
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
 
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', function() {
       navLinks.classList.toggle('active');
     });
 
-    // Fermeture du menu au clic sur un lien
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
+    var links = document.querySelectorAll('.nav-links a');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function() {
         navLinks.classList.remove('active');
       });
-    });
+    }
   }
 
   // Bouton Retour en haut
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  var scrollTopBtn = document.getElementById('scrollTopBtn');
   if (scrollTopBtn) {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
       if (window.scrollY > 400) {
         scrollTopBtn.classList.add('visible');
       } else {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    scrollTopBtn.addEventListener('click', (e) => {
+    scrollTopBtn.addEventListener('click', function(e) {
       e.preventDefault();
       window.scrollTo({
         top: 0,
@@ -37,20 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Animation d'apparition discrète au défilement
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
+  var sections = document.querySelectorAll('.section');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
 
-  sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(section);
-  });
+    sections.forEach(function(section) {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(section);
+    });
+  }
 });
