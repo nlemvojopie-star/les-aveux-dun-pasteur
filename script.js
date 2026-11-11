@@ -55,4 +55,42 @@ document.addEventListener('DOMContentLoaded', function() {
       observer.observe(section);
     });
   }
+
+  // Visionneuse Couverture (Lightbox)
+  var coverLink = document.getElementById('coverLink');
+  var imageModal = document.getElementById('imageModal');
+  var modalImage = document.getElementById('modalImage');
+  var modalClose = document.querySelector('.image-modal-close');
+
+  if (coverLink && imageModal && modalImage) {
+    coverLink.addEventListener('click', function(e) {
+      e.preventDefault(); // Empêche l'ouverture d'un nouvel onglet
+      modalImage.src = this.getAttribute('href');
+      imageModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Empêche le défilement pendant le zoom
+    });
+
+    function closeModal() {
+      imageModal.classList.remove('active');
+      document.body.style.overflow = ''; // Rétablit le défilement
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    // Fermer en cliquant sur le fond sombre
+    imageModal.addEventListener('click', function(e) {
+      if (e.target !== modalImage) {
+        closeModal();
+      }
+    });
+
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
 });

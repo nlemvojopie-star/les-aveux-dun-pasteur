@@ -48,10 +48,10 @@
         </div>
       </div>
       <div class="hero-cover">
-        <a href="couverture.jpg" target="_blank" rel="noopener" title="Cliquer pour afficher la couverture en grand">
-          <img src="couverture.jpg" alt="Couverture du roman Les aveux d’un pasteur" width="400" height="600">
-        </a>
-      </div>
+  <a href="couverture.jpg" id="coverLink" title="Cliquer pour agrandir la couverture">
+    <img src="couverture.jpg" alt="Couverture du roman Les aveux d’un pasteur" width="400" height="600">
+  </a>
+</div>
     </div>
   </section>
 
@@ -203,31 +203,40 @@
       </div>
 
       <div class="synopsis-card">
-        <h3>L’épouse du procureur</h3>
+        <h3>Chancelvie — L’alliée et témoin clé</h3>
+        <p>
+          Femme d’influence et gestionnaire des comptes du temple,
+          elle connaît tous les rouages du système. Témoin capitale
+          lors du procès, elle brise l’omerta en révélant la vérité
+          avant de tracer son propre chemin.
+        </p>
+      </div>
+
+      <div class="synopsis-card">
+        <h3>Solange — L’épouse du procureur</h3>
         <p>
           Elle franchit la porte du temple pour percer
           les secrets de François. Victime d’un piège mortel,
-          elle laisse un ultime enregistrement qui déclenche
-          l’enquête.
+          elle laisse un ultime enregistrement audio qui déclenche
+          l’enquête et fait vaciller l’empire du faux prophète.
         </p>
       </div>
 
       <div class="synopsis-card">
-        <h3>Martial</h3>
+        <h3>Capitaine Martial</h3>
         <p>
-          Présent lors de l’audition de François, Martial
-          l’interroge sur les faits et recueille sa déclaration.
-          Face à lui, les apparences commencent à tomber.
+          Officier méthodique et tenace, Martial rassemble patiemment
+          les preuves et les témoignages des victimes. C'est lui qui
+          mène les interrogatoires et recueille la confession décisive.
         </p>
       </div>
 
       <div class="synopsis-card">
-        <h3>Le procureur de la République</h3>
+        <h3>Le Procureur de la République</h3>
         <p>
-          Son épouse se retrouve au cœur du drame.
-          Il apparaît également dans la scène d’audition,
-          observant la déclaration de François derrière
-          une vitre sans tain.
+          Frappé au cœur par le deuil de son épouse Solange, il refuse
+          que la vengeance l’emporte et veille à ce que la rigueur de
+          la justice triomphe des protections politiques.
         </p>
       </div>
     </div>
@@ -306,12 +315,21 @@
     </div>
   </footer>
 
-  <!-- Bouton Retour en haut -->
+    <!-- Bouton Retour en haut -->
   <a href="#hero" class="btn-scroll-top" id="scrollTopBtn" title="Remonter au début du menu" aria-label="Remonter en haut">
     &#8679;
   </a>
 
-    <script src="script.js"></script>
+  <!-- Visionneuse de couverture (Lightbox) -->
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button type="button" class="image-modal-close" style="background:#c5a059; color:#0b1320; border:none; padding:10px 22px; border-radius:25px; font-weight:bold; font-size:16px; cursor:pointer;">
+      ✕ Fermer
+    </button>
+    <img class="image-modal-content" id="modalImage" alt="Couverture grand format">
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 
   <!-- Statistiques de fréquentation GoatCounter -->
   <script
